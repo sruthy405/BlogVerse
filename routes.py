@@ -17,19 +17,12 @@ import os
 app.secret_key = "ed3fb91c44b7d842085a51dae978a34fbed56929d8c60a9a05c9c292c4d4847d"
 
 app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///data.db"
-app.config["SQLALCHEMY_TRACK_MODIFICATION"] = False
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 db.init_app(app)
 import os
 
-with app.app_context():
-    print("Instance path:", app.instance_path)
-    print("Current working directory:", os.getcwd())
-    print("Configured URI:", app.config["SQLALCHEMY_DATABASE_URI"])
-
 login.init_app(app)
-
-
 login.login_view = "login"
 
 
@@ -51,11 +44,19 @@ def get_all_categories():
 
 with app.app_context():
     db.create_all()
-    # print("Engine URL:", db.engine.url)
-    # print("Database file:", db.engine.url.database)
+
+    if CategoryMaster.query.count() == 0:
+        db.session.add_all(
+            [
+                CategoryMaster(category_name="Technology"),
+                CategoryMaster(category_name="Movies"),
+                CategoryMaster(category_name="Music"),
+                CategoryMaster(category_name="Travel"),
+            ]
+        )
+        db.session.commit()
+
     get_all_categories()
-    # print(global_all_category_no)
-    # print(global_all_category_name)
 
 
 @app.route("/")
@@ -104,7 +105,7 @@ def register():
 
 
 @app.route("/blogs")
-@login_required
+
 def blogs():
     if current_user.is_authenticated:
         return render_template("/blogs_home.html")
