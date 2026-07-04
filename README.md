@@ -130,11 +130,38 @@ If you're using a fresh database, create the following categories before creatin
 
 ### 🏠 Home Page
 
-![Home](screenshots/home.png)
+![Home Page](screenshots/home.png)
 
-## 📝 Register
+---
 
-![Register](screenshots/register.png)
+### 📝 Register
+
+![Register Page](screenshots/register.png)
+
+---
+
+### 🔐 Login
+
+![Login Page](screenshots/login.png)
+
+---
+
+### 📚 Blog Dashboard
+
+![Blog Dashboard](screenshots/blogs_home.png)
+
+---
+
+### ✍️ Create Blog
+
+![Create Blog](screenshots/create_blog.png)
+
+---
+
+### 📖 Blog Details
+
+![Blog Details](screenshots/blog_detail.png)
+
 
 
 ---
