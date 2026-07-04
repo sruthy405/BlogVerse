@@ -2,7 +2,7 @@
 # BlogVerse ✒️
 
 > **A modern blogging platform built with Flask where users can create, manage, and discover stories.**
-**https://blogverse-yacs.onrender.com**
+**Link:**_ https://blogverse-yacs.onrender.com_
 BlogVerse is a full-stack web application that enables users to register, log in securely, write blogs, organize them into categories, edit or delete their own posts, and explore articles written by other users.
 
 ---
