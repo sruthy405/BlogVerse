@@ -179,22 +179,6 @@ If you're using a fresh database, create the following categories before creatin
 - 🔄 Password Reset
 - 🌐 REST API
 - ☁️ Deploy to Render
-
----
-
-## 👩‍💻 Author
-
-**Sruthy Sojan**
-
-GitHub: https://github.com/sruthy405
-
-LinkedIn: https://www.linkedin.com/in/sruthys444
-
----
-
-## 📄 License
-
-This project was developed for learning, portfolio, and educational purposes.
 =======
 # BlogVerse
 A UserBlog to  share articles and thoughts
