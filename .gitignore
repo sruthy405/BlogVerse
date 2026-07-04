@@ -20,5 +20,8 @@ instance/
 # OS files
 .DS_Store
 Thumbs.db
-# SQLite database (optional)
-instance/data.db
+
+# SQLite tools
+sqlite3.exe
+sqldiff.exe
+sqlite3_analyzer.exe
