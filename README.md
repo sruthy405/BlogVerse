@@ -1,4 +1,4 @@
-<<<<<<< HEAD
+
 # BlogVerse ✒️
 
 > **A modern blogging platform built with Flask where users can create, manage, and discover stories.**
