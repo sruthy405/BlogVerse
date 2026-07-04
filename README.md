@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # BlogVerse ✒️
 
 > **A modern blogging platform built with Flask where users can create, manage, and discover stories.**
@@ -194,3 +195,7 @@ LinkedIn: https://www.linkedin.com/in/sruthys444
 ## 📄 License
 
 This project was developed for learning, portfolio, and educational purposes.
+=======
+# BlogVerse
+A UserBlog to  share articles and thoughts
+>>>>>>> c0c13ba6209c573c40dbda95f283a98669bb857f
