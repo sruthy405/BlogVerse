@@ -1,0 +1,203 @@
+{% extends 'base.html' %}
+{% block title %}My Blogs | BlogVerse{% endblock %}
+{% block content %}
+<style>
+    .mine-wrap {
+        padding: 30px 10px 60px;
+        position: relative;
+    }
+
+    /* doodles */
+    .doodle {
+        position: absolute;
+        z-index: 0;
+        opacity: .9;
+    }
+    .doodle-plane { width: 46px; top: 6px; left: 4%; }
+    .doodle-mushroom { width: 38px; bottom: 40px; left: 3%; }
+    .doodle-swirl { width: 34px; top: 40px; right: 26%; }
+    .doodle-birds { width: 44px; top: 4px; right: 40%; }
+
+    @keyframes bob {
+        0%, 100% { transform: translateY(0) rotate(0deg); }
+        50% { transform: translateY(-8px) rotate(3deg); }
+    }
+    .doodle { animation: bob 6s ease-in-out infinite; }
+    .doodle-mushroom { animation-delay: .8s; }
+    .doodle-swirl { animation-delay: 1.4s; }
+    .doodle-birds { animation-delay: .3s; }
+
+    .mine-tag {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 40px 40px 40px 4px;
+        padding: 8px 24px;
+        font-family: 'Caveat', cursive;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 10px;
+        transform: rotate(-2deg);
+    }
+
+    .mine-wrap h1 {
+        position: relative;
+        z-index: 1;
+        font-family: 'Caveat', cursive;
+        font-size: 2.6rem;
+        font-weight: 700;
+        color: #14210f;
+        margin-bottom: 6px;
+    }
+
+    .mine-wrap .sub {
+        position: relative;
+        z-index: 1;
+        color: #333333;
+        margin-bottom: 26px;
+        font-size: 1rem;
+    }
+
+    .table-card {
+        position: relative;
+        z-index: 1;
+        background: #eef3e4;
+        border: 2px solid #111111;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 6px 6px 0 rgba(17, 17, 17, .12);
+        overflow-x: auto;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: .95rem;
+    }
+
+    thead th {
+        background: #b8cf9e;
+        color: #14210f;
+        font-weight: 700;
+        text-align: left;
+        padding: 14px 18px;
+        letter-spacing: .3px;
+        border-bottom: 2px solid #111111;
+    }
+    thead th:first-child { border-top-left-radius: 14px; }
+    thead th:last-child { border-top-right-radius: 14px; }
+
+    tbody td {
+        padding: 14px 18px;
+        color: #222222;
+        border-bottom: 1px solid rgba(17, 17, 17, .15);
+        vertical-align: top;
+        background: #f7f9f2;
+    }
+    tbody tr:hover td {
+        background: #e3ecd4;
+    }
+    tbody tr:last-child td { border-bottom: none; }
+
+    tbody td a {
+        color: #2f4a24;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px dashed #4c6b3a;
+    }
+    tbody td a:hover {
+        color: #111111;
+    }
+
+    .pill {
+        display: inline-block;
+        padding: 5px 13px;
+        font-size: .8rem;
+        font-weight: 700;
+        border: 1.5px solid #111111;
+    }
+    .pill-reads {
+        background: #ffffff;
+        color: #111111;
+        border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
+    }
+    .pill-rating {
+        background: #b8cf9e;
+        color: #14210f;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+    }
+
+    .empty-note {
+        position: relative;
+        z-index: 1;
+        text-align: center;
+        padding: 40px 20px;
+        color: #4c6b3a;
+        font-family: 'Caveat', cursive;
+        font-size: 1.4rem;
+    }
+
+    @media (max-width:640px) {
+        table { font-size: .85rem; }
+        thead th, tbody td { padding: 10px 12px; }
+        .doodle { transform: scale(.7); }
+    }
+</style>
+
+<div class="mine-wrap">
+    <svg class="doodle doodle-plane" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 30 L50 12 L34 30 L50 48 Z" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round"/>
+        <path d="M50 12 Q56 20 50 30 Q56 40 50 48" fill="none" stroke="#111111" stroke-width="1.5"/>
+    </svg>
+    <svg class="doodle doodle-mushroom" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 20 Q20 4 34 20 Z" fill="none" stroke="#111111" stroke-width="2"/>
+        <rect x="16" y="20" width="8" height="14" rx="3" fill="none" stroke="#111111" stroke-width="2"/>
+    </svg>
+    <svg class="doodle doodle-swirl" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 20 Q8 8 20 8 Q32 8 32 20 Q32 30 22 30 Q14 30 14 22" fill="none" stroke="#4c6b3a" stroke-width="2" stroke-linecap="round"/>
+    </svg>
+    <svg class="doodle doodle-birds" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 15 Q12 5 19 15 Q26 5 33 15" fill="none" stroke="#111111" stroke-width="2"/>
+        <path d="M32 20 Q37 12 42 20 Q47 12 52 20" fill="none" stroke="#111111" stroke-width="1.5"/>
+    </svg>
+
+    <span class="mine-tag">My Blogs</span>
+    <h1>Hello {{ current_user.username }}</h1>
+    <p class="sub">Here are the blogs you've authored:</p>
+
+    {% if all_self_blogs %}
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>Read Count</th>
+                    <th>Rating Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a_blog in all_self_blogs %}
+                <tr>
+                    <td>{{ all_categories[a_blog.category_id-1] }}</td>
+                    <td>
+                        <a href="/self_blog_detail/{{ a_blog.id }}/{{ all_categories[a_blog.category_id-1] }}">
+                            {{ a_blog.blog_text|safe|truncate(275) }}
+                        </a>
+                    </td>
+                    <td><span class="pill pill-reads">👁 {{ a_blog.blog_read_count }}</span></td>
+                    <td><span class="pill pill-rating">⭐ {{ a_blog.blog_rating_count }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% else %}
+    <p class="empty-note">You haven't written any blogs yet — time to start your story! 🖋️</p>
+    {% endif %}
+</div>
+{% endblock %}

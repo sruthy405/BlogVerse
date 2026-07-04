@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}BlogVerse{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Poppins', sans-serif;
+        }
+
+        body {
+            background: #eef3e4;
+            min-height: 100vh;
+        }
+
+        /* ---------- NAVBAR ---------- */
+        nav {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 14px;
+            flex-wrap: wrap;
+            padding: 20px 30px;
+            background: #f7f9f2;
+            border-bottom: 2px solid #111111;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            box-shadow: 0 4px 0 rgba(17, 17, 17, .06);
+        }
+
+        nav::before {
+            content: "🌿 BlogVerse";
+            font-family: 'Caveat', cursive;
+            font-size: 2.1rem;
+            font-weight: 700;
+            color: #14210f;
+            margin-right: auto;
+            padding-left: 6px;
+        }
+
+        nav a {
+            position: relative;
+            color: #14210f;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: .3px;
+            text-decoration: none;
+            padding: 10px 26px;
+            border-radius: 40px 40px 40px 4px;
+            background: #ffffff;
+            border: 2px solid #111111;
+            box-shadow: 3px 3px 0 rgba(17, 17, 17, .12);
+            transition: all .25s ease;
+        }
+
+        nav a:hover {
+            background: #b8cf9e;
+            color: #14210f;
+            transform: translate(-2px, -2px);
+            box-shadow: 5px 5px 0 rgba(17, 17, 17, .18);
+        }
+
+        nav a:active {
+            transform: translate(0, 0);
+            box-shadow: 2px 2px 0 rgba(17, 17, 17, .12);
+        }
+
+        /* Logout gets a soft contrast so it stands apart */
+        nav a[href*="logout"] {
+            background: #111111;
+            color: #f7f9f2;
+            border-color: #111111;
+        }
+
+        nav a[href*="logout"]:hover {
+            background: #4c6b3a;
+            border-color: #4c6b3a;
+            color: #ffffff;
+        }
+
+        hr {
+            border: none;
+            height: 2px;
+            background: repeating-linear-gradient(90deg,
+                    #111111 0,
+                    #111111 8px,
+                    transparent 8px,
+                    transparent 16px);
+            margin: 0;
+            opacity: .5;
+        }
+
+        .content {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 24px;
+        }
+
+        @media (max-width:640px) {
+            nav {
+                justify-content: center;
+                padding: 16px;
+            }
+
+            nav::before {
+                width: 100%;
+                text-align: center;
+                margin: 0 0 8px 0;
+            }
+
+            nav a {
+                font-size: .9rem;
+                padding: 9px 18px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <nav>
+        <a href="{{ url_for('register') }}">Register</a>
+        <a href="{{ url_for('login') }}">Login</a>
+        <a href="{{ url_for('logout') }}">Logout</a>
+        <a href="{{ url_for('blogs') }}">Blogs</a>
+    </nav>
+    <hr>
+
+    <div class="content">
+        {% block content %}
+
+        {% endblock %}
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,252 @@
+{% extends 'base.html' %}
+{% block title %}Home | BlogVerse{% endblock %}
+{% block content %}
+<style>
+    .home-wrap {
+        text-align: center;
+        padding: 50px 20px 40px;
+        position: relative;
+    }
+
+    /* doodles */
+    .doodle {
+        position: absolute;
+        z-index: 0;
+        opacity: .9;
+        animation: bob 6s ease-in-out infinite;
+    }
+
+    .doodle-plane {
+        width: 50px;
+        top: 0;
+        left: 8%;
+    }
+
+    .doodle-birds {
+        width: 60px;
+        top: 6px;
+        right: 8%;
+        animation-delay: .4s;
+    }
+
+    .doodle-mushroom {
+        width: 40px;
+        bottom: 20px;
+        left: 4%;
+        animation-delay: .8s;
+    }
+
+    .doodle-swirl {
+        width: 40px;
+        bottom: 10px;
+        right: 6%;
+        animation-delay: 1.2s;
+    }
+
+    .doodle-dot1 {
+        width: 14px;
+        top: 50%;
+        left: 2%;
+        animation-delay: 1.6s;
+    }
+    .doodle-star {
+        width: 14px;
+        top: 50%;
+        left: 2%;
+        animation-delay: 1.6s;
+    }
+
+    @keyframes bob {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(4deg);
+        }
+    }
+
+    .home-badge {
+        position: relative;
+        z-index: 1;
+        display: inline-block;
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 40px 40px 40px 4px;
+        padding: 8px 24px;
+        font-family: 'Caveat', cursive;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 22px;
+        transform: rotate(-2deg);
+    }
+
+    .home-wrap h1 {
+        position: relative;
+        z-index: 1;
+        font-family: 'Caveat', cursive;
+        font-size: 3.6rem;
+        font-weight: 700;
+        color: #14210f;
+        margin-bottom: 16px;
+        line-height: 1.2;
+    }
+
+    .home-wrap p.sub {
+        position: relative;
+        z-index: 1;
+        font-size: 1.05rem;
+        color: #333333;
+        max-width: 520px;
+        margin: 0 auto 40px;
+        line-height: 1.7;
+    }
+
+    .card-row {
+        position: relative;
+        z-index: 1;
+        display: flex;
+        justify-content: center;
+        gap: 24px;
+        flex-wrap: wrap;
+        margin-top: 10px;
+    }
+
+    .card-link {
+        text-decoration: none;
+        width: 220px;
+        padding: 32px 22px;
+        border-radius: 18px;
+        background: #f7f9f2;
+        border: 2px solid #111111;
+        box-shadow: 5px 5px 0 rgba(17, 17, 17, .12);
+        transition: all .25s ease;
+        color: #14210f;
+        font-weight: 600;
+    }
+
+    .card-link:hover {
+        transform: translate(-3px, -3px);
+        box-shadow: 8px 8px 0 rgba(17, 17, 17, .18);
+    }
+
+    .card-link .icon {
+        font-size: 2.2rem;
+        display: block;
+        margin-bottom: 14px;
+    }
+
+    .card-link .desc {
+        display: block;
+        font-weight: 400;
+        font-size: .85rem;
+        color: #4c6b3a;
+        margin-top: 8px;
+        line-height: 1.5;
+    }
+
+    /* individual card accents */
+    .card-create {
+        background: #b8cf9e;
+    }
+
+    .card-create:hover {
+        background: #4c6b3a;
+        color: #ffffff;
+    }
+
+    .card-create:hover .desc {
+        color: #e6ede0;
+    }
+
+    .card-mine {
+        background: #ffffff;
+    }
+
+    .card-mine:hover {
+        background: #111111;
+        color: #ffffff;
+    }
+
+    .card-mine:hover .desc {
+        color: #cccccc;
+    }
+
+    .card-all {
+        background: #dbe6cb;
+    }
+
+    .card-all:hover {
+        background: #4c6b3a;
+        color: #ffffff;
+    }
+
+    .card-all:hover .desc {
+        color: #e6ede0;
+    }
+
+    @media (max-width:640px) {
+        .home-wrap h1 {
+            font-size: 2.4rem;
+        }
+
+        .card-link {
+            width: 80%;
+        }
+
+        .doodle {
+            transform: scale(.7);
+        }
+    }
+</style>
+
+<div class="home-wrap">
+    <svg class="doodle doodle-plane" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 30 L50 12 L34 30 L50 48 Z" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" />
+        <path d="M50 12 Q56 20 50 30 Q56 40 50 48" fill="none" stroke="#111111" stroke-width="1.5" />
+    </svg>
+    <svg class="doodle doodle-birds" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 15 Q12 5 19 15 Q26 5 33 15" fill="none" stroke="#111111" stroke-width="2" />
+        <path d="M32 20 Q37 12 42 20 Q47 12 52 20" fill="none" stroke="#111111" stroke-width="1.5" />
+    </svg>
+    <svg class="doodle doodle-mushroom" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 20 Q20 4 34 20 Z" fill="none" stroke="#111111" stroke-width="2" />
+        <rect x="16" y="20" width="8" height="14" rx="3" fill="none" stroke="#111111" stroke-width="2" />
+    </svg>
+    <svg class="doodle doodle-swirl" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 20 Q8 8 20 8 Q32 8 32 20 Q32 30 22 30 Q14 30 14 22" fill="none" stroke="#4c6b3a" stroke-width="2"
+            stroke-linecap="round" />
+    </svg>
+    <svg class="doodle doodle-dot1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="4" fill="#4c6b3a" />
+    </svg>
+        <svg class="doodle doodle-star" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="4" fill="#4c6b3a" />
+        </svg>
+
+ 
+    <h1>Welcome to the Home of Blogs</h1>
+    <p class="sub">Create, explore, and manage your stories all in one place.</p>
+
+    <div class="card-row">
+        <a href="{{ url_for('create_blog') }}" class="card-link card-create">
+            <span class="icon">🖋️</span>
+            Create Blog
+            <span class="desc">Start writing something new</span>
+        </a>
+        <a href="{{ url_for('view_blogs') }}" class="card-link card-mine">
+            <span class="icon">📖</span>
+            View My Blogs
+            <span class="desc">See what you've written</span>
+        </a>
+        <a href="{{ url_for('list_all_blogs') }}" class="card-link card-all">
+            <span class="icon">🌐</span>
+            List All Blogs
+            <span class="desc">Browse everyone's stories</span>
+        </a>
+    </div>
+</div>
+{% endblock %}

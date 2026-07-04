@@ -1,0 +1,274 @@
+{% extends 'base.html' %}
+{% block title %}All Blogs | BlogVerse{% endblock %}
+{% block content %}
+<link
+    href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+<style>
+    .listing-wrap {
+        padding: 30px 10px 60px;
+        position: relative;
+    }
+
+    /* ---------- doodles ---------- */
+    .doodle {
+        position: absolute;
+        z-index: 0;
+        opacity: .9;
+    }
+
+    .doodle-plane {
+        width: 46px;
+        top: 6px;
+        left: 4%;
+    }
+
+    .doodle-cat {
+        width: 50px;
+        top: 90px;
+        right: 6%;
+    }
+
+    .doodle-mushroom {
+        width: 38px;
+        bottom: 40px;
+        left: 3%;
+    }
+
+    .doodle-swirl {
+        width: 34px;
+        top: 40px;
+        right: 26%;
+    }
+
+    .doodle-birds {
+        width: 44px;
+        top: 4px;
+        right: 40%;
+    }
+
+    @keyframes bob {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(3deg);
+        }
+    }
+
+    .doodle {
+        animation: bob 6s ease-in-out infinite;
+    }
+
+    .doodle-cat {
+        animation-delay: .6s;
+    }
+
+    .doodle-mushroom {
+        animation-delay: 1.2s;
+    }
+
+    .doodle-swirl {
+        animation-delay: 1.8s;
+    }
+
+    .doodle-birds {
+        animation-delay: .3s;
+    }
+
+    /* ---------- welcome badge (cloud shape) ---------- */
+    .welcome-badge {
+        display: inline-block;
+        position: relative;
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 40px 40px 40px 4px;
+        padding: 12px 30px;
+        font-size: 1rem;
+        font-weight: 600;
+        color: #111111;
+        margin-bottom: 34px;
+        z-index: 1;
+    }
+
+    .welcome-badge .name {
+        font-family: 'Caveat', cursive;
+        font-size: 1.4rem;
+        color: #4c6b3a;
+        margin-left: 4px;
+    }
+
+    /* ---------- table card ---------- */
+    .table-card {
+        background: #eef3e4;
+        border: 2px solid #111111;
+        border-radius: 20px;
+        padding: 10px;
+        box-shadow: 6px 6px 0 rgba(17, 17, 17, .12);
+        overflow-x: auto;
+        position: relative;
+        z-index: 1;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: separate;
+        border-spacing: 0;
+        font-size: .95rem;
+    }
+
+    thead th {
+        background: #b8cf9e;
+        color: #14210f;
+        font-weight: 700;
+        text-align: left;
+        padding: 14px 18px;
+        letter-spacing: .3px;
+        border-bottom: 2px solid #111111;
+    }
+
+    thead th:first-child {
+        border-top-left-radius: 14px;
+    }
+
+    thead th:last-child {
+        border-top-right-radius: 14px;
+    }
+
+    tbody td {
+        padding: 14px 18px;
+        color: #222222;
+        border-bottom: 1px solid rgba(17, 17, 17, .15);
+        vertical-align: top;
+        background: #f7f9f2;
+    }
+
+    tbody tr:hover td {
+        background: #e3ecd4;
+    }
+
+    tbody tr:last-child td {
+        border-bottom: none;
+    }
+
+    tbody td a {
+        color: #2f4a24;
+        font-weight: 600;
+        text-decoration: none;
+        border-bottom: 1px dashed #4c6b3a;
+    }
+
+    tbody td a:hover {
+        color: #111111;
+    }
+
+    /* ---------- pills styled like the cover's scalloped badges ---------- */
+    .pill {
+        display: inline-block;
+        padding: 4px 12px;
+        border-radius: 50%;
+        font-size: .8rem;
+        font-weight: 700;
+        border: 1.5px solid #111111;
+    }
+
+    .pill-rating {
+        background: #b8cf9e;
+        color: #14210f;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+        padding: 5px 13px;
+    }
+
+    .pill-reads {
+        background: #ffffff;
+        color: #111111;
+        border-radius: 55% 45% 50% 50% / 45% 55% 45% 55%;
+        padding: 5px 13px;
+    }
+
+    @media (max-width:640px) {
+        table {
+            font-size: .85rem;
+        }
+
+        thead th,
+        tbody td {
+            padding: 10px 12px;
+        }
+
+        .doodle {
+            transform: scale(.7);
+        }
+    }
+</style>
+
+<div class="listing-wrap">
+    <!-- decorative doodles, styled after the planner cover -->
+    <svg class="doodle doodle-plane" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 30 L50 12 L34 30 L50 48 Z" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" />
+        <path d="M50 12 Q56 20 50 30 Q56 40 50 48" fill="none" stroke="#111111" stroke-width="1.5" />
+    </svg>
+    <svg class="doodle doodle-cat" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="30" cy="38" rx="16" ry="12" fill="none" stroke="#111111" stroke-width="2" />
+        <path d="M18 30 L14 16 L26 26 M42 30 L46 16 L34 26" fill="none" stroke="#111111" stroke-width="2"
+            stroke-linejoin="round" />
+        <circle cx="24" cy="36" r="1.6" fill="#111111" />
+        <circle cx="36" cy="36" r="1.6" fill="#111111" />
+    </svg>
+    <svg class="doodle doodle-mushroom" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M6 20 Q20 4 34 20 Z" fill="none" stroke="#111111" stroke-width="2" />
+        <rect x="16" y="20" width="8" height="14" rx="3" fill="none" stroke="#111111" stroke-width="2" />
+    </svg>
+    <svg class="doodle doodle-swirl" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 20 Q8 8 20 8 Q32 8 32 20 Q32 30 22 30 Q14 30 14 22" fill="none" stroke="#4c6b3a" stroke-width="2"
+            stroke-linecap="round" />
+    </svg>
+    <svg class="doodle doodle-birds" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 15 Q12 5 19 15 Q26 5 33 15" fill="none" stroke="#111111" stroke-width="2" />
+        <path d="M32 20 Q37 12 42 20 Q47 12 52 20" fill="none" stroke="#111111" stroke-width="1.5" />
+    </svg>
+
+    {% if current_user.is_authenticated %}
+    <span class="welcome-badge">👋 Welcome back,<span class="name">{{ current_user.username }}</span></span>
+    {% else %}
+    <span class="welcome-badge">✨ Welcome, Guest</span>
+    {% endif %}
+
+    <div class="table-card">
+        <table>
+            <thead>
+                <tr>
+                    <th>Author</th>
+                    <th>Category</th>
+                    <th>Content</th>
+                    <th>Rating</th>
+                    <th>Read Count</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for a_blog in all_blogs %}
+                <tr>
+                    <td>{{ all_users[a_blog.blog_user_id-1].username }}</td>
+                    <td>{{ all_categories[a_blog.category_id-1] }}</td>
+                    {% if current_user.is_authenticated %}
+                    <td>
+                        <a
+                            href="/blogDetail/{{ a_blog.id }}/{{ all_users[a_blog.blog_user_id-1].username }}/{{ all_categories[a_blog.category_id-1] }}">
+                            {{ a_blog.blog_text|safe|truncate(275) }}
+                        </a>
+                    </td>
+                    {% else %}
+                    <td>{{ a_blog.blog_text|safe|truncate(275) }}</td>
+                    {% endif %}
+                    <td><span class="pill pill-rating">⭐ {{ a_blog.blog_rating_count }}</span></td>
+                    <td><span class="pill pill-reads">👁 {{ a_blog.blog_read_count }}</span></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

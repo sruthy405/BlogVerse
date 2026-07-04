@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BlogVerse</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800&family=Caveat:wght@600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+    <section class="hero">
+        <!-- grid paper background lines -->
+        <div class="grid-bg"></div>
+
+        <!-- doodles, styled after the planner cover -->
+        <svg class="doodle doodle-plane" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 30 L50 12 L34 30 L50 48 Z" fill="none" stroke="#111111" stroke-width="2"
+                stroke-linejoin="round" />
+            <path d="M50 12 Q56 20 50 30 Q56 40 50 48" fill="none" stroke="#111111" stroke-width="1.5" />
+        </svg>
+        <svg class="doodle doodle-cat" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+            <ellipse cx="30" cy="38" rx="16" ry="12" fill="none" stroke="#111111" stroke-width="2" />
+            <path d="M18 30 L14 16 L26 26 M42 30 L46 16 L34 26" fill="none" stroke="#111111" stroke-width="2"
+                stroke-linejoin="round" />
+            <circle cx="24" cy="36" r="1.6" fill="#111111" />
+            <circle cx="36" cy="36" r="1.6" fill="#111111" />
+        </svg>
+        <svg class="doodle doodle-mushroom" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M6 20 Q20 4 34 20 Z" fill="none" stroke="#111111" stroke-width="2" />
+            <rect x="16" y="20" width="8" height="14" rx="3" fill="none" stroke="#111111" stroke-width="2" />
+        </svg>
+        <svg class="doodle doodle-swirl" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M8 20 Q8 8 20 8 Q32 8 32 20 Q32 30 22 30 Q14 30 14 22" fill="none" stroke="#4c6b3a"
+                stroke-width="2" stroke-linecap="round" />
+        </svg>
+        <svg class="doodle doodle-birds" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 15 Q12 5 19 15 Q26 5 33 15" fill="none" stroke="#111111" stroke-width="2" />
+            <path d="M32 20 Q37 12 42 20 Q47 12 52 20" fill="none" stroke="#111111" stroke-width="1.5" />
+        </svg>
+        <svg class="doodle doodle-cup" viewBox="0 0 40 60" xmlns="http://www.w3.org/2000/svg">
+            <rect x="8" y="16" width="24" height="34" rx="2" fill="none" stroke="#111111" stroke-width="2" />
+            <path d="M8 16 L20 4 L32 16" fill="none" stroke="#111111" stroke-width="2" stroke-linejoin="round" />
+            <line x1="20" y1="4" x2="20" y2="28" stroke="#111111" stroke-width="1.5" />
+        </svg>
+        <svg class="doodle doodle-whale" viewBox="0 0 60 40" xmlns="http://www.w3.org/2000/svg">
+            <path d="M5 25 Q10 12 30 14 Q48 15 55 22 Q45 26 30 25 Q15 25 5 25 Z" fill="none" stroke="#111111"
+                stroke-width="2" stroke-linejoin="round" />
+            <path d="M50 15 Q56 10 58 15 Q54 18 50 15 Z" fill="none" stroke="#111111" stroke-width="1.5" />
+        </svg>
+        <svg class="doodle doodle-dot1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="4" fill="#4c6b3a" />
+        </svg>
+        <svg class="doodle doodle-dot2" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="10" cy="10" r="3" fill="#111111" />
+        </svg>
+
+        <!-- scalloped sticker badges, like on the cover -->
+        <div class="sticker sticker-1"></div>
+        <div class="sticker sticker-2"></div>
+        <div class="sticker sticker-3"></div>
+
+        <div class="hero-content">
+       
+
+            <h1>Every Story Deserves To Be Heard.</h1>
+
+            <p class="sub">Discover inspiring articles, share your ideas,<br>and connect with readers from
+                around the world.</p>
+
+            <div class="buttons">
+                <a href="/blogs" class="btn btn-primary">Explore Blogs</a>
+                <a href="/register" class="btn btn-outline">Start Writing</a>
+            </div>
+        </div>
+    </section>
+</body>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+        background: #eef3e4;
+    }
+
+    .hero {
+        height: 100vh;
+        background: #eef3e4;
+        position: relative;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+        overflow: hidden;
+    }
+
+    /* grid paper lines like the cover */
+    .grid-bg {
+        position: absolute;
+        inset: 0;
+        background-image:
+            linear-gradient(rgba(17, 17, 17, .07) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(17, 17, 17, .07) 1px, transparent 1px);
+        background-size: 60px 60px;
+        z-index: 0;
+    }
+
+    /* doodles */
+    .doodle {
+        position: absolute;
+        z-index: 1;
+        opacity: .9;
+        animation: bob 6s ease-in-out infinite;
+    }
+
+    .doodle-plane {
+        width: 60px;
+        top: 10%;
+        left: 10%;
+    }
+
+    .doodle-cat {
+        width: 60px;
+        top: 66%;
+        left: 12%;
+        animation-delay: .5s;
+    }
+
+    .doodle-mushroom {
+        width: 44px;
+        top: 62%;
+        left: 44%;
+        animation-delay: 1s;
+    }
+
+    .doodle-swirl {
+        width: 44px;
+        top: 14%;
+        left: 46%;
+        animation-delay: 1.5s;
+    }
+
+    .doodle-birds {
+        width: 70px;
+        top: 8%;
+        right: 10%;
+        animation-delay: .2s;
+    }
+
+    .doodle-cup {
+        width: 44px;
+        top: 30%;
+        right: 10%;
+        animation-delay: .8s;
+    }
+
+    .doodle-whale {
+        width: 70px;
+        bottom: 8%;
+        right: 10%;
+        animation-delay: 1.2s;
+    }
+
+    .doodle-dot1 {
+        width: 16px;
+        top: 40%;
+        left: 6%;
+        animation-delay: .4s;
+    }
+
+    .doodle-dot2 {
+        width: 12px;
+        bottom: 20%;
+        left: 40%;
+        animation-delay: 1.6s;
+    }
+
+    @keyframes bob {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-10px) rotate(4deg);
+        }
+    }
+
+    /* scalloped stickers */
+    .sticker {
+        position: absolute;
+        z-index: 1;
+        background: #b8cf9e;
+        border: 2px solid #111111;
+        border-radius: 40% 60% 55% 45% / 50% 45% 55% 50%;
+    }
+
+    .sticker-1 {
+        width: 70px;
+        height: 70px;
+        top: 20%;
+        right: 26%;
+    }
+
+    .sticker-2 {
+        width: 50px;
+        height: 50px;
+        bottom: 22%;
+        left: 28%;
+        background: #ffffff;
+    }
+
+    .sticker-3 {
+        width: 60px;
+        height: 60px;
+        top: 60%;
+        right: 30%;
+    }
+
+    .hero-content {
+        position: relative;
+        z-index: 2;
+        max-width: 640px;
+        padding: 30px;
+        color: #111111;
+    }
+
+    .tag {
+        display: inline-block;
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 40px 40px 40px 4px;
+        padding: 8px 26px;
+        font-family: 'Caveat', cursive;
+        font-size: 1.4rem;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 26px;
+        transform: rotate(-2deg);
+    }
+
+    .hero-content h1 {
+        font-family: 'Caveat', cursive;
+        font-size: 3.6rem;
+        line-height: 1.15;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 20px;
+    }
+
+    .hero-content h1 .amp {
+        color: #4c6b3a;
+    }
+
+    .hero-content p.sub {
+        font-size: 1.05rem;
+        color: #333333;
+        line-height: 1.8;
+        margin-bottom: 36px;
+        font-weight: 400;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+
+    .btn {
+        text-decoration: none;
+        padding: 13px 32px;
+        border-radius: 40px 40px 40px 4px;
+        font-size: 15px;
+        font-weight: 600;
+        letter-spacing: .3px;
+        border: 2px solid #111111;
+        box-shadow: 3px 3px 0 rgba(17, 17, 17, .15);
+        transition: all .25s ease;
+    }
+
+    .btn-primary {
+        background: #b8cf9e;
+        color: #14210f;
+    }
+
+    .btn-primary:hover {
+        background: #4c6b3a;
+        color: #ffffff;
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 rgba(17, 17, 17, .2);
+    }
+
+    .btn-outline {
+        background: #ffffff;
+        color: #111111;
+    }
+
+    .btn-outline:hover {
+        background: #111111;
+        color: #f7f9f2;
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 rgba(17, 17, 17, .2);
+    }
+
+    @media (max-width:640px) {
+        .hero-content h1 {
+            font-size: 2.4rem;
+        }
+
+        .doodle,
+        .sticker {
+            transform: scale(.6);
+        }
+    }
+</style>
+
+</html>

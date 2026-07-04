@@ -1,0 +1,219 @@
+{% extends 'base.html' %}
+{% block title %}Login | BlogVerse{% endblock %}
+{% block content %}
+<style>
+    .login-wrap {
+        display: flex;
+        justify-content: center;
+        padding: 30px 10px 60px;
+        position: relative;
+    }
+
+    /* doodles around the card */
+    .doodle {
+        position: absolute;
+        z-index: 0;
+        opacity: .9;
+        animation: bob 6s ease-in-out infinite;
+    }
+
+    .doodle-birds {
+        width: 50px;
+        top: -6px;
+        right: 12%;
+    }
+
+    .doodle-cat {
+        width: 44px;
+        bottom: 6px;
+        right: 8%;
+        animation-delay: .6s;
+    }
+
+    .doodle-swirl {
+        width: 40px;
+        top: 16px;
+        left: 8%;
+        animation-delay: 1s;
+    }
+
+    .doodle-dot1 {
+        width: 14px;
+        bottom: 46px;
+        left: 14%;
+        animation-delay: 1.4s;
+    }
+
+    @keyframes bob {
+
+        0%,
+        100% {
+            transform: translateY(0) rotate(0deg);
+        }
+
+        50% {
+            transform: translateY(-8px) rotate(4deg);
+        }
+    }
+
+    .login-card {
+        position: relative;
+        z-index: 1;
+        background: #f7f9f2;
+        border: 2px solid #111111;
+        border-radius: 20px;
+        padding: 40px 44px 34px;
+        max-width: 400px;
+        width: 100%;
+        box-shadow: 6px 6px 0 rgba(17, 17, 17, .12);
+        text-align: center;
+    }
+
+    .login-tag {
+        display: inline-block;
+        background: #ffffff;
+        border: 2px solid #111111;
+        border-radius: 40px 40px 40px 4px;
+        padding: 6px 24px;
+        font-family: 'Caveat', cursive;
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: #111111;
+        margin-bottom: 18px;
+        transform: rotate(-2deg);
+    }
+
+    .login-card h1 {
+        font-family: 'Caveat', cursive;
+        font-size: 2.4rem;
+        font-weight: 700;
+        color: #14210f;
+        margin-bottom: 26px;
+    }
+
+    .field-row {
+        text-align: left;
+        margin-bottom: 18px;
+    }
+
+    .field-row label {
+        display: block;
+        font-size: .8rem;
+        font-weight: 700;
+        letter-spacing: .5px;
+        text-transform: uppercase;
+        color: #4c6b3a;
+        margin-bottom: 6px;
+    }
+
+    .field-row input {
+        width: 100%;
+        padding: 11px 14px;
+        border: 2px solid #111111;
+        border-radius: 10px;
+        background: #ffffff;
+        font-size: .95rem;
+        font-family: 'Poppins', sans-serif;
+        color: #14210f;
+        outline: none;
+        transition: all .2s ease;
+    }
+
+    .field-row input:focus {
+        background: #eef3e4;
+        box-shadow: 3px 3px 0 rgba(17, 17, 17, .15);
+        transform: translate(-1px, -1px);
+    }
+
+    .btn-submit {
+        width: 100%;
+        margin-top: 8px;
+        padding: 13px 0;
+        border-radius: 40px 40px 40px 4px;
+        border: 2px solid #111111;
+        background: #b8cf9e;
+        color: #14210f;
+        font-size: 1rem;
+        font-weight: 700;
+        font-family: 'Poppins', sans-serif;
+        letter-spacing: .3px;
+        cursor: pointer;
+        box-shadow: 3px 3px 0 rgba(17, 17, 17, .15);
+        transition: all .25s ease;
+    }
+
+    .btn-submit:hover {
+        background: #4c6b3a;
+        color: #ffffff;
+        transform: translate(-2px, -2px);
+        box-shadow: 5px 5px 0 rgba(17, 17, 17, .2);
+    }
+
+    .register-note {
+        margin-top: 24px;
+        font-size: .9rem;
+        color: #333333;
+    }
+
+    .register-note a {
+        font-weight: 700;
+        color: #14210f;
+        text-decoration: none;
+        border-bottom: 1px dashed #4c6b3a;
+    }
+
+    .register-note a:hover {
+        color: #4c6b3a;
+    }
+
+    @media (max-width:480px) {
+        .login-card {
+            padding: 30px 24px;
+        }
+
+        .doodle {
+            transform: scale(.7);
+        }
+    }
+</style>
+
+<div class="login-wrap">
+    <svg class="doodle doodle-birds" viewBox="0 0 60 30" xmlns="http://www.w3.org/2000/svg">
+        <path d="M5 15 Q12 5 19 15 Q26 5 33 15" fill="none" stroke="#111111" stroke-width="2" />
+        <path d="M32 20 Q37 12 42 20 Q47 12 52 20" fill="none" stroke="#111111" stroke-width="1.5" />
+    </svg>
+    <svg class="doodle doodle-cat" viewBox="0 0 60 60" xmlns="http://www.w3.org/2000/svg">
+        <ellipse cx="30" cy="38" rx="16" ry="12" fill="none" stroke="#111111" stroke-width="2" />
+        <path d="M18 30 L14 16 L26 26 M42 30 L46 16 L34 26" fill="none" stroke="#111111" stroke-width="2"
+            stroke-linejoin="round" />
+        <circle cx="24" cy="36" r="1.6" fill="#111111" />
+        <circle cx="36" cy="36" r="1.6" fill="#111111" />
+    </svg>
+    <svg class="doodle doodle-swirl" viewBox="0 0 40 40" xmlns="http://www.w3.org/2000/svg">
+        <path d="M8 20 Q8 8 20 8 Q32 8 32 20 Q32 30 22 30 Q14 30 14 22" fill="none" stroke="#4c6b3a" stroke-width="2"
+            stroke-linecap="round" />
+    </svg>
+    <svg class="doodle doodle-dot1" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="10" cy="10" r="4" fill="#4c6b3a" />
+    </svg>
+
+    <div class="login-card">
+        <span class="login-tag">Welcome Back</span>
+        <h1>Login to BlogVerse</h1>
+
+        <form action="" method="POST">
+            <div class="field-row">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email">
+            </div>
+            <div class="field-row">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password">
+            </div>
+            <input class="btn-submit" type="submit" value="Login">
+        </form>
+
+        <p class="register-note">Don't have an account? <a href="{{ url_for('register') }}">Register</a></p>
+    </div>
+</div>
+{% endblock %}
